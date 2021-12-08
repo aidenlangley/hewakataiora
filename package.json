@@ -6,9 +6,9 @@
   "main": "index.js",
   "scripts": {
     "lint": "eslint src",
-    "start": "run-p start:**",
-    "start:hugo": "hugo -d ../dist -s site -vw",
-    "start:webpack": "webpack-dev-server --config webpack.dev.js --hot",
+    "dev": "run-p dev:**",
+    "dev:hugo": "hugo -d ../dist -s site -vw",
+    "dev:webpack": "webpack-dev-server --config webpack.dev.js --hot",
     "preview": "run-p preview:**",
     "preview:hugo": "npm run start:hugo -- -D -F",
     "preview:webpack": "npm run start:webpack",

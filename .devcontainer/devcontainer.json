@@ -1,0 +1,72 @@
+{
+	"name": "Hugo (Community)",
+	"runArgs": [
+		"--init",
+		"--userns=keep-id"
+	],
+	"build": {
+		"dockerfile": "Dockerfile",
+		"args": {
+			"VARIANT": "hugo",
+			"VERSION": "latest",
+			"NODE_VERSION": "12",
+		}
+	},
+	"extensions": [
+		"budparr.language-hugo-vscode",
+		"bungcip.better-toml",
+		"christian-kohler.npm-intellisense",
+		"davidanson.vscode-markdownlint",
+		"dbaeumer.vscode-eslint",
+		"ecmel.vscode-html-css",
+		"editorconfig.editorconfig",
+		"eg2.vscode-npm-script",
+		"esbenp.prettier-vscode",
+		"naumovs.color-highlight",
+		"streetsidesoftware.code-spell-checker",
+		"stylelint.vscode-stylelint",
+		"xabikos.javascriptsnippets",
+		"yzhang.markdown-all-in-one"
+	],
+	"settings": {
+		"editor.linkedEditing": true,
+		"editor.rulers": [
+			80,
+			100
+		],
+		"files.associations": {
+			".*.*ignore": "ignore",
+		},
+		"terminal.integrated.defaultProfile.linux": "zsh",
+		"html.format.indentHandlebars": true,
+		"html.format.wrapLineLength": 80,
+		"editor.formatOnSave": true,
+		"javascript.format.semicolons": "remove",
+		"[css]": {
+			"editor.suggest.insertMode": "replace",
+			"editor.quickSuggestions": {
+				"strings": true
+			}
+		},
+		"eslint.alwaysShowStatus": true,
+		"eslint.probe": [
+			"javascript"
+		],
+		"css.validate": false,
+		"stylelint.configFile": ".stylelintrc",
+		"stylelint.reportNeedlessDisables": true,
+		"stylelint.snippet": [
+			"css",
+			"postcss"
+		]
+	},
+	"forwardPorts": [
+		1313
+	],
+	"remoteUser": "node",
+	"containerUser": "node",
+	"workspaceMount": "src=${localWorkspaceFolder},dst=/workspace,type=bind,Z",
+	"workspaceFolder": "/workspace",
+	"postCreateCommand": "bash -c 'curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash'",
+	"postStartCommand": "bash -c 'nvm install; yarn install'"
+}
